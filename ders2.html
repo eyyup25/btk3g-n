@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <h2><a href="index.html">Ana Sayfa</a></h2>
+    <h2><a href="ders1.html">Ders 1</a></h2>
+    <h2><a href="ders2.html">Ders 2</a></h2>
+    <h2><a href="ders3.html">Ders 3</a></h2>
+    <h2><a href="ders4.html">Ders 4</a></h2>
+    
+  <canvas id="canvas" width="200" height="100" style="border: 1px solid black;"></canvas>
+   
+   <script>
+        var c=document.getElementById("canvas");
+        var ctx=c.getContext("2d");
+
+         ctx.moveTo(0,0);
+         ctx.lineTo(100,50);
+         ctx.stroke();
+         ctx.beginPath();
+         ctx.arc(125,50,25,0,2*Math.PI);
+         ctx.stroke();
+         ctx.font="20px serif";
+         ctx.fillText("E",118,58);
+         
+    </script>
+</body>
+</html>

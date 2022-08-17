@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt</title>
+</head>
+<body>
+    <h2><a href="index.html">Ana Sayfa</a></h2>
+    <h2><a href="ders1.html">Ders 1</a></h2>
+    <h2><a href="ders2.html">Ders 2</a></h2>
+    <h2><a href="ders3.html">Ders 3</a></h2>
+    <h2><a href="ders4.html">Ders 4</a></h2>
+
+
+    <h3>Kişisel Veriler</h3>
+    <label>İSİM</label>
+    <input type="text" id="name" required>
+    <br>
+    <label>SOYİSİM</label>
+    <input type="text" id="surname" required>
+    <br><br>
+    <button type="button"onclick="namekayıt()">İsmi Sakla</button><br><br>
+    <button type="button"onclick="lokasyonAl()">Konum Bilgisi</button><br><br>
+    <button type="button"onclick="sonucGetir()">Sonuç Getir</button>
+    <br><br><br>
+    <p id="sonuc">Sonuç</p>
+    <script>
+        function namekayıt()
+        {
+            var name=document.getElementById("name").value;
+            localStorage.setItem("name", name);
+
+            var surname=document.getElementById("surname").value;
+            localStorage.setItem("surname", surname);
+        }
+
+        function sonucGetir()
+        {
+            var sonuc= document.getElementById("sonuc");
+            sonuc.innerHTML="<br> İSİM:"+localStorage.getItem("name")+
+            "<br> SOYİSİM:"+localStorage.getItem("surname")+
+            "<br> Enlem:"+localStorage.getItem("enlem")+
+            "<br> Boylam:"+localStorage.getItem("boylam");
+        }
+        
+        var lokasyon=document.getElementById("lokasyon");
+        function lokasyonAl()
+        {
+            if(navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else
+            {
+                lokasyon.innerHTML="Sen uçmuşsun";
+            } 
+        }
+        function showPosition(position)
+        {
+            lokasyon.innerHTML="Enlem:"+ position.coords.latitude+" <br>  Boylam"+position.coords.longitude
+
+            localStorage.setItem("enlem",position.coords.latitude)
+            localStorage.setItem("boylam",position.coords.longitude)
+        }
+        
+    </script>
+</body>
+</html>
